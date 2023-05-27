@@ -14,24 +14,11 @@
 	class TestCase extends BaseTestCase {
 		use RefreshDatabase;
 
-		public Filesystem $storage;
-		private array $config;
-
-		public function getConfig( string $key, $default ) {
-			return Arr::get( $this->config, $key, $default );
-		}
-
 		/**
 		 * Setup the test environment.
 		 */
 		protected function setUp(): void {
-			// Code before application created.
-
 			parent::setUp();
-
-			// Code after application created.
-			$this->config  = config( 'starter' );
-			$this->storage = Storage::disk( 'public' );
 		}
 
 		/**
