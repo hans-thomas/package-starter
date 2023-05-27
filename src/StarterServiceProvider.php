@@ -23,13 +23,14 @@
 		 * @return void
 		 */
 		public function boot() {
-			$this->publishes( [
-				__DIR__ . '/../config/config.php' => config_path( 'starter.php' )
-			], 'alicia-config' );
 			$this->loadMigrationsFrom( __DIR__ . '/../database/migrations' );
 			$this->mergeConfigFrom( __DIR__ . '/../config/config.php', 'starter' );
 
 			$this->registerRoutes();
+			if ( $this->app->runningInConsole() ) {
+				$this->registerCommands();
+				$this->registerPublishes();
+			}
 		}
 
 		/**
@@ -37,8 +38,30 @@
 		 *
 		 * @return void
 		 */
-		protected function registerRoutes() {
+		private function registerRoutes() {
 			Route::prefix( 'starter' )->middleware( 'api' )->group( __DIR__ . '/../routes/api.php' );
+		}
+
+		/**
+		 * Register created commands
+		 *
+		 * @return void
+		 */
+		private function registerCommands() {
+			$this->commands( [
+				// commands register here
+			] );
+		}
+
+		/**
+		 * Register publishable files
+		 *
+		 * @return void
+		 */
+		private function registerPublishes() {
+			$this->publishes( [
+				__DIR__ . '/../config/config.php' => config_path( 'starter.php' )
+			], 'starter-config' );
 		}
 
 	}
