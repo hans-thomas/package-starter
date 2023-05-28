@@ -9,10 +9,10 @@ It's a predefined laravel package scaffold that has features like:
 
 ## Installation
 
-clone via SSH
-> git clone git@github.com:hans-thomas/package-starter.git
+Clone latest release via cURL
+```bash
+curl -L https://api.github.com/repos/hans-thomas/package-starter/releases/latest | awk -F \" -v RS="," '/tarball_url/ {print $(NF-1)}' | xargs wget -O - | tar -xz && find ./ -maxdepth 1 -name 'hans-thomas-package-starter-*' -exec mv {}  ./package-starter  \;
 
-or clone using HTTPS
-> git clone https://github.com/hans-thomas/package-starter.git
+```
 
 then, create something amazing🔥
