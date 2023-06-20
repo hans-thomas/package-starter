@@ -9,4 +9,4 @@ It's a predefined laravel package scaffold with below features:
 - Xdebug
 - GitHub action
 
-Click on `Use this template` and then, create something amazing🔥
+Click on `Use this template` and then, create something amazing 🔥
