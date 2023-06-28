@@ -13,5 +13,6 @@ It's a predefined laravel package scaffold with below features:
 - Phpunit support
 - Xdebug
 - GitHub action
+- Codecov support
 
 Click on `Use this template` and then, create something amazing 🔥
