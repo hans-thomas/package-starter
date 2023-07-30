@@ -1,21 +1,18 @@
 <?php
 
+namespace Hans\Starter\Tests\Feature;
 
-	namespace Hans\Starter\Tests\Feature;
+    use Hans\Starter\Tests\TestCase;
 
-
-	use Hans\Starter\Tests\TestCase;
-
-	class SampleModelTest extends TestCase {
-
-		/**
-		 * @test
-		 *
-		 *
-		 * @return void
-		 */
-		public function sample() {
-			$this->assertTrue( true );
-		}
-
-	}
+    class SampleModelTest extends TestCase
+    {
+        /**
+         * @test
+         *
+         * @return void
+         */
+        public function sample()
+        {
+            $this->assertTrue(true);
+        }
+    }

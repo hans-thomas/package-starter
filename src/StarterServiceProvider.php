@@ -1,67 +1,70 @@
 <?php
 
+namespace Hans\Starter;
 
-	namespace Hans\Starter;
+    use Illuminate\Support\Facades\Route;
+    use Illuminate\Support\ServiceProvider;
 
+    class StarterServiceProvider extends ServiceProvider
+    {
+        /**
+         * Register any application services.
+         *
+         * @return void
+         */
+        public function register()
+        {
+            //
+        }
 
-	use Illuminate\Support\Facades\Route;
-	use Illuminate\Support\ServiceProvider;
+        /**
+         * Bootstrap any application services.
+         *
+         * @return void
+         */
+        public function boot()
+        {
+            $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+            $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'starter');
 
-	class StarterServiceProvider extends ServiceProvider {
-		/**
-		 * Register any application services.
-		 *
-		 * @return void
-		 */
-		public function register() {
-			//
-		}
+            $this->registerRoutes();
+            if ($this->app->runningInConsole()) {
+                $this->registerCommands();
+                $this->registerPublishes();
+            }
+        }
 
-		/**
-		 * Bootstrap any application services.
-		 *
-		 * @return void
-		 */
-		public function boot() {
-			$this->loadMigrationsFrom( __DIR__ . '/../database/migrations' );
-			$this->mergeConfigFrom( __DIR__ . '/../config/config.php', 'starter' );
+        /**
+         * Define routes setup.
+         *
+         * @return void
+         */
+        private function registerRoutes()
+        {
+            Route::prefix('starter')->middleware('api')->group(__DIR__.'/../routes/api.php');
+        }
 
-			$this->registerRoutes();
-			if ( $this->app->runningInConsole() ) {
-				$this->registerCommands();
-				$this->registerPublishes();
-			}
-		}
+        /**
+         * Register created commands.
+         *
+         * @return void
+         */
+        private function registerCommands()
+        {
+            $this->commands([
+                // commands register here
+            ]);
+        }
 
-		/**
-		 * Define routes setup.
-		 *
-		 * @return void
-		 */
-		private function registerRoutes() {
-			Route::prefix( 'starter' )->middleware( 'api' )->group( __DIR__ . '/../routes/api.php' );
-		}
-
-		/**
-		 * Register created commands
-		 *
-		 * @return void
-		 */
-		private function registerCommands() {
-			$this->commands( [
-				// commands register here
-			] );
-		}
-
-		/**
-		 * Register publishable files
-		 *
-		 * @return void
-		 */
-		private function registerPublishes() {
-			$this->publishes( [
-				__DIR__ . '/../config/config.php' => config_path( 'starter.php' )
-			], 'starter-config' );
-		}
-
-	}
+        /**
+         * Register publishable files.
+         *
+         * @return void
+         */
+        private function registerPublishes()
+        {
+            $this->publishes([
+                __DIR__.'/../config/config.php' => config_path('starter.php'),
+            ], 'starter-config');
+        }
+    }
