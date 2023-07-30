@@ -41,9 +41,9 @@ class TestCase extends BaseTestCase
      */
     protected function getPackageProviders($app)
     {
-        return array(
+        return [
             StarterServiceProvider::class,
-        );
+        ];
     }
 
     /**
@@ -55,7 +55,7 @@ class TestCase extends BaseTestCase
      */
     protected function getPackageAliases($app)
     {
-        return array(/* 'Acme' => 'Acme\Facade' */);
+        return [/* 'Acme' => 'Acme\Facade' */];
     }
 
     /**
@@ -69,11 +69,11 @@ class TestCase extends BaseTestCase
     {
         // Setup default database to use sqlite :memory:
         $app['config']->set('database.default', 'testbench');
-        $app['config']->set('database.connections.testbench', array(
+        $app['config']->set('database.connections.testbench', [
             'driver'   => 'sqlite',
             'database' => ':memory:',
             'prefix'   => '',
-        ));
+        ]);
     }
 
     /**
