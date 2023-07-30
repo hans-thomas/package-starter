@@ -3,5 +3,3 @@ php:
   finder:
     exclude:
       - "docs"
-js: true
-css: true
