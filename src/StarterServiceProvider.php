@@ -51,9 +51,9 @@ class StarterServiceProvider extends ServiceProvider
      */
     private function registerCommands()
     {
-        $this->commands(array(
+        $this->commands([
             // commands register here
-        ));
+        ]);
     }
 
     /**
@@ -63,8 +63,8 @@ class StarterServiceProvider extends ServiceProvider
      */
     private function registerPublishes()
     {
-        $this->publishes(array(
+        $this->publishes([
             __DIR__.'/../config/config.php' => config_path('starter.php'),
-        ), 'starter-config');
+        ], 'starter-config');
     }
 }
