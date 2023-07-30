@@ -1,0 +1,7 @@
+php:
+  preset: recommended
+  finder:
+    exclude:
+      - "docs"
+js: true
+css: true
