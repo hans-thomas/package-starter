@@ -20,6 +20,10 @@ It's a predefined laravel package scaffold with below features:
 
 Click on `Use this template` and then, create something amazing 🔥
 
+## Laravel starter
+
+If you are looking fo a laravel project starter, see [this](https://github.com/hans-thomas/laravel-starter).
+
 ## Contributing
 
 1. Fork it!
