@@ -1,6 +1,6 @@
 <?php
 
-namespace Hans\Starter\Tests\Feature;
+namespace Hans\Starter\Tests\Unit;
 
 use Hans\Starter\Tests\TestCase;
 
